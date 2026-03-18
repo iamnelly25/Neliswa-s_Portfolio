@@ -1,9 +1,82 @@
 import { useState, useEffect, useRef } from "react";
 
+function ITSupportIcon({ gradient }: { gradient: string }) {
+  const id = "it-grad";
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f472b6" />
+          <stop offset="0.5" stopColor="#e879f9" />
+          <stop offset="1" stopColor="#c026d3" />
+        </linearGradient>
+      </defs>
+      <rect x="4" y="6" width="32" height="20" rx="3" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
+      <path d="M4 23h32" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
+      <rect x="15" y="26" width="10" height="4" rx="1.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <path d="M10 34h20" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="28" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="1.8" fill="none"/>
+      <path d="M28 9.5V7M28 17v-2.5M24.5 12H22M34 12h-2.5M25.97 10.03l-1.77-1.76M31.77 15.73l-1.77-1.77M30.03 10.03l1.77-1.77M24.23 15.73l1.77-1.77" stroke={`url(#${id})`} strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function AIIcon({ gradient }: { gradient: string }) {
+  const id = "ai-grad";
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#a78bfa" />
+          <stop offset="0.5" stopColor="#8b5cf6" />
+          <stop offset="1" stopColor="#c026d3" />
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="20" r="7" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
+      <circle cx="20" cy="20" r="2.5" fill={`url(#${id})`}/>
+      <circle cx="6" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <circle cx="34" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <circle cx="6" cy="28" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <circle cx="34" cy="28" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <circle cx="20" cy="4" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <circle cx="20" cy="36" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
+      <path d="M13 16.5L8.2 13.8M27 16.5L31.8 13.8M13 23.5L8.2 26.2M27 23.5L31.8 26.2M20 13V6.5M20 27v6.5" stroke={`url(#${id})`} strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function DevIcon({ gradient }: { gradient: string }) {
+  const id = "dev-grad";
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#e879f9" />
+          <stop offset="0.5" stopColor="#c026d3" />
+          <stop offset="1" stopColor="#f472b6" />
+        </linearGradient>
+      </defs>
+      <rect x="4" y="7" width="32" height="26" rx="3" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
+      <path d="M4 13h32" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="9" cy="10" r="1.3" fill={`url(#${id})`}/>
+      <circle cx="14" cy="10" r="1.3" fill={`url(#${id})`}/>
+      <circle cx="19" cy="10" r="1.3" fill={`url(#${id})`}/>
+      <path d="M14 22l-4 4 4 4" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M26 22l4 4-4 4" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M22 20l-4 12" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+const SkillIcon = ({ index }: { index: number }) => {
+  if (index === 0) return <ITSupportIcon gradient="" />;
+  if (index === 1) return <AIIcon gradient="" />;
+  return <DevIcon gradient="" />;
+};
+
 const skills = [
   {
     title: "IT Systems Support",
-    icon: "🖥️",
     description: "Providing expert technical support and maintaining robust IT infrastructure to keep systems running smoothly and efficiently.",
     tags: ["Hardware", "Networking", "Troubleshooting", "Infrastructure"],
     gradient: "from-rose-400 via-pink-400 to-fuchsia-400",
@@ -11,7 +84,6 @@ const skills = [
   },
   {
     title: "AI Prompt Engineer",
-    icon: "🤖",
     description: "Crafting precise, effective AI prompts that unlock the full potential of language models to solve complex problems and drive innovation.",
     tags: ["GPT", "Prompt Design", "AI Tools", "Automation"],
     gradient: "from-violet-400 via-purple-400 to-fuchsia-500",
@@ -19,7 +91,6 @@ const skills = [
   },
   {
     title: "Software Developer",
-    icon: "💻",
     description: "Building elegant, scalable software solutions with clean code architecture and modern development practices.",
     tags: ["React", "TypeScript", "APIs", "Full-Stack"],
     gradient: "from-fuchsia-400 via-pink-400 to-rose-500",
@@ -364,14 +435,14 @@ function Skills() {
                 <div className="relative z-10">
                   {/* Icon */}
                   <div
-                    className="text-5xl mb-6 w-20 h-20 flex items-center justify-center rounded-2xl"
+                    className="mb-6 w-20 h-20 flex items-center justify-center rounded-2xl"
                     style={{
                       background: `linear-gradient(135deg, ${skill.glowColor}, rgba(255,255,255,0.5))`,
                       backdropFilter: "blur(10px)",
                       border: "1px solid rgba(255,255,255,0.6)",
                     }}
                   >
-                    {skill.icon}
+                    <SkillIcon index={idx} />
                   </div>
 
                   <h3 className="text-xl font-bold text-foreground mb-3">{skill.title}</h3>
