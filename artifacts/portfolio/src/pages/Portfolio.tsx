@@ -1,102 +1,102 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
-function ITSupportIcon({ gradient }: { gradient: string }) {
-  const id = "it-grad";
+/* ─── SVG ICONS ─────────────────────────────────────────────────────────────── */
+
+function ITSupportIcon() {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#f472b6" />
-          <stop offset="0.5" stopColor="#e879f9" />
-          <stop offset="1" stopColor="#c026d3" />
+        <linearGradient id="it-g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f472b6"/><stop offset="0.5" stopColor="#e879f9"/><stop offset="1" stopColor="#c026d3"/>
         </linearGradient>
       </defs>
-      <rect x="4" y="6" width="32" height="20" rx="3" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
-      <path d="M4 23h32" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
-      <rect x="15" y="26" width="10" height="4" rx="1.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <path d="M10 34h20" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round"/>
-      <circle cx="28" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="1.8" fill="none"/>
-      <path d="M28 9.5V7M28 17v-2.5M24.5 12H22M34 12h-2.5M25.97 10.03l-1.77-1.76M31.77 15.73l-1.77-1.77M30.03 10.03l1.77-1.77M24.23 15.73l1.77-1.77" stroke={`url(#${id})`} strokeWidth="1.5" strokeLinecap="round"/>
+      <rect x="4" y="6" width="32" height="20" rx="3" stroke="url(#it-g)" strokeWidth="2.2" fill="none"/>
+      <path d="M4 23h32" stroke="url(#it-g)" strokeWidth="2" strokeLinecap="round"/>
+      <rect x="15" y="26" width="10" height="4" rx="1.5" stroke="url(#it-g)" strokeWidth="2" fill="none"/>
+      <path d="M10 34h20" stroke="url(#it-g)" strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="28" cy="12" r="2.5" stroke="url(#it-g)" strokeWidth="1.8" fill="none"/>
+      <path d="M28 9.5V7M28 17v-2.5M24.5 12H22M34 12h-2.5M25.97 10.03l-1.77-1.76M31.77 15.73l-1.77-1.77M30.03 10.03l1.77-1.77M24.23 15.73l1.77-1.77" stroke="url(#it-g)" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   );
 }
 
-function AIIcon({ gradient }: { gradient: string }) {
-  const id = "ai-grad";
+function AIIcon() {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#a78bfa" />
-          <stop offset="0.5" stopColor="#8b5cf6" />
-          <stop offset="1" stopColor="#c026d3" />
+        <linearGradient id="ai-g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#a78bfa"/><stop offset="0.5" stopColor="#8b5cf6"/><stop offset="1" stopColor="#c026d3"/>
         </linearGradient>
       </defs>
-      <circle cx="20" cy="20" r="7" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
-      <circle cx="20" cy="20" r="2.5" fill={`url(#${id})`}/>
-      <circle cx="6" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <circle cx="34" cy="12" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <circle cx="6" cy="28" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <circle cx="34" cy="28" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <circle cx="20" cy="4" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <circle cx="20" cy="36" r="2.5" stroke={`url(#${id})`} strokeWidth="2" fill="none"/>
-      <path d="M13 16.5L8.2 13.8M27 16.5L31.8 13.8M13 23.5L8.2 26.2M27 23.5L31.8 26.2M20 13V6.5M20 27v6.5" stroke={`url(#${id})`} strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="20" cy="20" r="7" stroke="url(#ai-g)" strokeWidth="2.2" fill="none"/>
+      <circle cx="20" cy="20" r="2.5" fill="url(#ai-g)"/>
+      <circle cx="6" cy="12" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <circle cx="34" cy="12" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <circle cx="6" cy="28" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <circle cx="34" cy="28" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <circle cx="20" cy="4" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <circle cx="20" cy="36" r="2.5" stroke="url(#ai-g)" strokeWidth="2" fill="none"/>
+      <path d="M13 16.5L8.2 13.8M27 16.5L31.8 13.8M13 23.5L8.2 26.2M27 23.5L31.8 26.2M20 13V6.5M20 27v6.5" stroke="url(#ai-g)" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   );
 }
 
-function DevIcon({ gradient }: { gradient: string }) {
-  const id = "dev-grad";
+function DevIcon() {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#e879f9" />
-          <stop offset="0.5" stopColor="#c026d3" />
-          <stop offset="1" stopColor="#f472b6" />
+        <linearGradient id="dev-g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#e879f9"/><stop offset="0.5" stopColor="#c026d3"/><stop offset="1" stopColor="#f59e0b"/>
         </linearGradient>
       </defs>
-      <rect x="4" y="7" width="32" height="26" rx="3" stroke={`url(#${id})`} strokeWidth="2.2" fill="none"/>
-      <path d="M4 13h32" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="9" cy="10" r="1.3" fill={`url(#${id})`}/>
-      <circle cx="14" cy="10" r="1.3" fill={`url(#${id})`}/>
-      <circle cx="19" cy="10" r="1.3" fill={`url(#${id})`}/>
-      <path d="M14 22l-4 4 4 4" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M26 22l4 4-4 4" stroke={`url(#${id})`} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M22 20l-4 12" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round"/>
+      <rect x="4" y="7" width="32" height="26" rx="3" stroke="url(#dev-g)" strokeWidth="2.2" fill="none"/>
+      <path d="M4 13h32" stroke="url(#dev-g)" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="9" cy="10" r="1.3" fill="url(#dev-g)"/>
+      <circle cx="14" cy="10" r="1.3" fill="url(#dev-g)"/>
+      <circle cx="19" cy="10" r="1.3" fill="url(#dev-g)"/>
+      <path d="M14 22l-4 4 4 4" stroke="url(#dev-g)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M26 22l4 4-4 4" stroke="url(#dev-g)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M22 20l-4 12" stroke="url(#dev-g)" strokeWidth="2" strokeLinecap="round"/>
     </svg>
   );
 }
 
 const SkillIcon = ({ index }: { index: number }) => {
-  if (index === 0) return <ITSupportIcon gradient="" />;
-  if (index === 1) return <AIIcon gradient="" />;
-  return <DevIcon gradient="" />;
+  if (index === 0) return <ITSupportIcon />;
+  if (index === 1) return <AIIcon />;
+  return <DevIcon />;
 };
+
+/* ─── DATA ───────────────────────────────────────────────────────────────────── */
 
 const skills = [
   {
     title: "IT Systems Support",
     description: "Providing expert technical support and maintaining robust IT infrastructure to keep systems running smoothly and efficiently.",
     tags: ["Hardware", "Networking", "Troubleshooting", "Infrastructure"],
-    gradient: "from-rose-400 via-pink-400 to-fuchsia-400",
-    glowColor: "rgba(244, 114, 182, 0.3)",
+    gradient: "from-pink-400 via-rose-400 to-fuchsia-500",
+    glowColor: "rgba(244,114,182,0.35)",
+    borderColor: "#f472b6",
   },
   {
     title: "AI Prompt Engineer",
     description: "Crafting precise, effective AI prompts that unlock the full potential of language models to solve complex problems and drive innovation.",
     tags: ["GPT", "Prompt Design", "AI Tools", "Automation"],
-    gradient: "from-violet-400 via-purple-400 to-fuchsia-500",
-    glowColor: "rgba(167, 139, 250, 0.3)",
+    gradient: "from-violet-500 via-purple-500 to-fuchsia-500",
+    glowColor: "rgba(167,139,250,0.35)",
+    borderColor: "#a78bfa",
   },
   {
     title: "Software Developer",
     description: "Building elegant, scalable software solutions with clean code architecture and modern development practices.",
     tags: ["React", "TypeScript", "APIs", "Full-Stack"],
-    gradient: "from-fuchsia-400 via-pink-400 to-rose-500",
-    glowColor: "rgba(232, 121, 249, 0.3)",
+    gradient: "from-fuchsia-500 via-pink-500 to-amber-400",
+    glowColor: "rgba(232,121,249,0.35)",
+    borderColor: "#e879f9",
   },
 ];
+
+/* ─── HOOKS ──────────────────────────────────────────────────────────────────── */
 
 function useIntersection(ref: React.RefObject<Element | null>, threshold = 0.15) {
   const [visible, setVisible] = useState(false);
@@ -113,79 +113,185 @@ function useIntersection(ref: React.RefObject<Element | null>, threshold = 0.15)
   return visible;
 }
 
+function useTypewriter(words: string[], speed = 80, pause = 1800) {
+  const [text, setText] = useState("");
+  const [wordIdx, setWordIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIdx];
+    const timeout = setTimeout(() => {
+      if (!deleting) {
+        setText(current.slice(0, charIdx + 1));
+        if (charIdx + 1 === current.length) {
+          setTimeout(() => setDeleting(true), pause);
+        } else {
+          setCharIdx((c) => c + 1);
+        }
+      } else {
+        setText(current.slice(0, charIdx - 1));
+        if (charIdx - 1 === 0) {
+          setDeleting(false);
+          setWordIdx((w) => (w + 1) % words.length);
+          setCharIdx(0);
+        } else {
+          setCharIdx((c) => c - 1);
+        }
+      }
+    }, deleting ? speed / 2 : speed);
+    return () => clearTimeout(timeout);
+  }, [charIdx, deleting, wordIdx, words, speed, pause]);
+
+  return text;
+}
+
+/* ─── SPARKLES ───────────────────────────────────────────────────────────────── */
+
+function Sparkles({ count = 18 }: { count?: number }) {
+  const sparkles = useRef(
+    Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * 2 + 1.5,
+      delay: Math.random() * 3,
+      color: ["#f472b6", "#a78bfa", "#e879f9", "#f59e0b", "#fb7185", "#c084fc"][Math.floor(Math.random() * 6)],
+    }))
+  ).current;
+
+  return (
+    <>
+      {sparkles.map((s) => (
+        <div
+          key={s.id}
+          className="sparkle"
+          style={{
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: s.size,
+            height: s.size,
+            backgroundColor: s.color,
+            "--duration": `${s.duration}s`,
+            "--delay": `${s.delay}s`,
+          } as React.CSSProperties}
+        />
+      ))}
+    </>
+  );
+}
+
+/* ─── SCROLL PROGRESS ────────────────────────────────────────────────────────── */
+
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      setProgress(pct);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return <div className="scroll-progress" style={{ width: `${progress}%` }} />;
+}
+
+/* ─── TILT CARD ──────────────────────────────────────────────────────────────── */
+
+function TiltCard({ children, className = "", style = {} }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const onMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const tiltX = ((y - cy) / cy) * 8;
+    const tiltY = ((cx - x) / cx) * 8;
+    card.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-10px) scale(1.025)`;
+    card.style.boxShadow = `${tiltY * -2}px ${tiltX * 2}px 40px rgba(180,80,140,0.25)`;
+  }, []);
+
+  const onLeave = useCallback(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "perspective(900px) rotateX(0) rotateY(0) translateY(0) scale(1)";
+    card.style.boxShadow = "";
+    card.style.transition = "all 0.5s cubic-bezier(0.175,0.885,0.32,1.275)";
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={className}
+      style={{ ...style, transition: "all 0.15s ease", transformStyle: "preserve-3d" }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────────────────────────── */
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   const navItems = ["About", "Skills", "Contact"];
-
   const scrollTo = (id: string) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "glass-card border-b border-white/60 shadow-md py-3"
-          : "py-5 bg-transparent"
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-card border-b border-white/60 shadow-lg py-3" : "py-5 bg-transparent"}`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-xl font-bold gradient-text tracking-wide"
+          className="text-2xl font-black gradient-text tracking-wider animate-neon"
         >
           NM
         </button>
 
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className="nav-link text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
-            >
+            <button key={item} onClick={() => scrollTo(item)}
+              className="nav-link text-sm font-semibold text-foreground/70 hover:text-foreground transition-colors">
               {item}
             </button>
           ))}
-          <button
-            onClick={() => scrollTo("Contact")}
-            className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{
-              background: "linear-gradient(135deg, #c2547c, #8b5cf6)",
-              boxShadow: "0 4px 15px rgba(180, 80, 140, 0.3)",
-            }}
-          >
-            Hire Me
+          <button onClick={() => scrollTo("Contact")}
+            className="btn-primary px-6 py-2.5 rounded-full text-sm font-bold text-white"
+            style={{ background: "linear-gradient(135deg,#d0558a,#a855f7,#f59e0b)", backgroundSize: "200% 100%", boxShadow: "0 4px 20px rgba(180,80,140,0.45)" }}>
+            Hire Me ✨
           </button>
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 rounded-lg glass-card"
-        >
-          <span className="block w-5 h-0.5 bg-foreground mb-1 transition-all" />
-          <span className="block w-5 h-0.5 bg-foreground mb-1 transition-all" />
-          <span className="block w-3 h-0.5 bg-foreground transition-all" />
+        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg glass-card">
+          <span className="block w-5 h-0.5 bg-foreground mb-1" />
+          <span className="block w-5 h-0.5 bg-foreground mb-1" />
+          <span className="block w-3 h-0.5 bg-foreground" />
         </button>
       </div>
 
       {menuOpen && (
         <div className="md:hidden glass-card mx-4 mt-2 rounded-2xl p-4 flex flex-col gap-3">
           {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className="text-left px-4 py-2 rounded-xl hover:bg-white/30 transition-colors text-sm font-medium"
-            >
+            <button key={item} onClick={() => scrollTo(item)}
+              className="text-left px-4 py-2 rounded-xl hover:bg-white/30 transition-colors text-sm font-semibold">
               {item}
             </button>
           ))}
@@ -195,97 +301,114 @@ function Navbar() {
   );
 }
 
+/* ─── HERO ───────────────────────────────────────────────────────────────────── */
+
 function Hero() {
+  const typeText = useTypewriter(
+    ["IT Systems Support", "AI Prompt Engineer", "Software Developer", "Tech Innovator"],
+    75, 2000
+  );
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-gradient pt-20">
-      {/* Decorative floating orbs */}
-      <div
-        className="decorative-orb animate-float absolute top-20 left-10 w-64 h-64"
-        style={{ background: "radial-gradient(circle, rgba(194,84,124,0.5), rgba(139,92,246,0.2))" }}
-      />
-      <div
-        className="decorative-orb animate-float-slow absolute bottom-20 right-10 w-80 h-80"
-        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.4), rgba(232,121,249,0.2))" }}
-      />
-      <div
-        className="decorative-orb animate-float-delay absolute top-1/2 left-1/3 w-48 h-48"
-        style={{ background: "radial-gradient(circle, rgba(232,121,249,0.35), rgba(194,84,124,0.2))" }}
-      />
+      {/* Sparkle field */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Sparkles count={24} />
+      </div>
 
-      {/* Floating decorative shapes */}
-      <div className="animate-float absolute top-32 right-24 w-8 h-8 rounded-full border-2 border-pink-300/60 opacity-70" />
-      <div className="animate-float-delay absolute top-56 left-20 w-5 h-5 rounded-full bg-violet-300/50" />
-      <div className="animate-float-slow absolute bottom-40 left-32 w-10 h-10 rounded-lg border-2 border-fuchsia-300/50 opacity-60 rotate-12" />
-      <div className="animate-float-delay-2 absolute bottom-32 right-40 w-6 h-6 rounded-full bg-pink-300/40" />
+      {/* Morphing blobs */}
+      <div className="decorative-blob animate-blob absolute top-12 left-4 w-72 h-72"
+        style={{ background: "radial-gradient(circle, rgba(212,70,134,0.55) 0%, rgba(139,92,246,0.25) 70%)" }} />
+      <div className="decorative-blob animate-blob-delay absolute bottom-16 right-8 w-96 h-80"
+        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.50) 0%, rgba(245,158,11,0.20) 70%)" }} />
+      <div className="decorative-blob animate-float-slow absolute top-1/3 right-1/4 w-60 h-60"
+        style={{ background: "radial-gradient(circle, rgba(232,121,249,0.45) 0%, rgba(244,114,182,0.20) 70%)" }} />
+      <div className="decorative-blob animate-float absolute bottom-1/3 left-1/4 w-48 h-48"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.35) 0%, rgba(212,70,134,0.15) 70%)" }} />
 
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(180,80,140,0.8) 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
+      {/* Floating shapes */}
+      <div className="animate-float absolute top-28 right-20 w-10 h-10 rounded-full border-2 border-pink-400/50 opacity-70" />
+      <div className="animate-float-delay absolute top-52 left-16 w-5 h-5 rounded-full bg-violet-400/60" />
+      <div className="animate-float-slow absolute bottom-36 left-28 w-12 h-12 rounded-lg border-2 border-fuchsia-400/40 opacity-60 rotate-12" />
+      <div className="animate-float-delay-2 absolute bottom-28 right-36 w-7 h-7 rounded-full bg-amber-300/50" />
+      <div className="animate-float-delay-3 absolute top-1/2 left-8 w-4 h-4 rounded-full bg-pink-400/50" />
+
+      {/* Spinning rings */}
+      <div className="animate-spin-slow absolute top-1/4 right-16 w-24 h-24 rounded-full border border-dashed border-pink-300/30 pointer-events-none" />
+      <div className="animate-spin-reverse absolute bottom-1/4 left-16 w-16 h-16 rounded-full border border-dashed border-violet-300/30 pointer-events-none" />
+
+      {/* Dot grid overlay */}
+      <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(180,80,140,1) 1px, transparent 0)", backgroundSize: "36px 36px" }} />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full mb-8 animate-fade-in-up">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm font-medium text-foreground/70">Available for opportunities</span>
+        {/* Status badge */}
+        <div className="inline-flex items-center gap-2.5 glass-card px-5 py-2.5 rounded-full mb-8 animate-fade-in-up shadow-md">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-sm font-semibold text-foreground/70 tracking-wide">Available for opportunities</span>
+          <span className="text-lg">🌟</span>
         </div>
 
         {/* Name */}
-        <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight animate-fade-in-up" style={{ animationDelay: "0.1s", opacity: 0, animationFillMode: "forwards" }}>
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-2 tracking-tighter leading-none animate-fade-in-up"
+          style={{ animationDelay: "0.1s", opacity: 0, animationFillMode: "forwards" }}>
           <span className="gradient-text">Neliswa</span>
-          <br />
-          <span className="text-foreground/85">Mapisa</span>
+        </h1>
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter leading-none animate-fade-in-up"
+          style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
+          <span className="text-foreground/80">Mapisa</span>
         </h1>
 
-        {/* Role badges */}
-        <div className="flex flex-wrap justify-center gap-3 my-8 animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
-          {["IT Systems Support", "AI Prompt Engineer", "Software Developer"].map((role, i) => (
-            <span
-              key={role}
-              className="glass-card px-4 py-2 rounded-full text-sm font-semibold text-foreground/80 skill-card-hover cursor-default"
-              style={{
-                borderLeft: `3px solid ${i === 0 ? "#f472b6" : i === 1 ? "#a78bfa" : "#e879f9"}`,
-              }}
-            >
-              {role}
+        {/* Typewriter */}
+        <div className="h-10 flex items-center justify-center mb-8 animate-fade-in-up"
+          style={{ animationDelay: "0.3s", opacity: 0, animationFillMode: "forwards" }}>
+          <span className="text-xl md:text-2xl font-bold gradient-text-gold">{typeText}</span>
+          <span className="ml-1 w-0.5 h-7 bg-amber-400 cursor-blink rounded-full" />
+        </div>
+
+        {/* Role pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8 animate-fade-in-up"
+          style={{ animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards" }}>
+          {[
+            { label: "IT Systems Support", color: "#f472b6" },
+            { label: "AI Prompt Engineer", color: "#a78bfa" },
+            { label: "Software Developer", color: "#f59e0b" },
+          ].map(({ label, color }) => (
+            <span key={label}
+              className="glass-card px-4 py-2 rounded-full text-sm font-semibold text-foreground/80 transition-all duration-300 hover:scale-105 cursor-default"
+              style={{ borderLeft: `3px solid ${color}`, boxShadow: `0 0 12px ${color}40` }}>
+              {label}
             </span>
           ))}
         </div>
 
         {/* Tagline */}
-        <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s", opacity: 0, animationFillMode: "forwards" }}>
+        <p className="text-base md:text-lg text-foreground/55 max-w-xl mx-auto leading-relaxed mb-10 animate-fade-in-up"
+          style={{ animationDelay: "0.5s", opacity: 0, animationFillMode: "forwards" }}>
           Bridging technology and innovation — delivering reliable systems, intelligent AI solutions,
           and elegant software with precision and passion.
         </p>
 
-        {/* CTA buttons */}
-        <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards" }}>
+        {/* CTAs */}
+        <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up"
+          style={{ animationDelay: "0.6s", opacity: 0, animationFillMode: "forwards" }}>
           <button
             onClick={() => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3.5 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 animate-pulse-glow"
-            style={{
-              background: "linear-gradient(135deg, #c2547c 0%, #8b5cf6 100%)",
-              boxShadow: "0 4px 20px rgba(180, 80, 140, 0.4)",
-            }}
-          >
-            View My Work
+            className="btn-primary px-9 py-4 rounded-full font-bold text-white text-base animate-pulse-glow"
+            style={{ background: "linear-gradient(135deg,#d0558a,#a855f7,#f59e0b)", backgroundSize: "200% 100%", boxShadow: "0 6px 28px rgba(180,80,140,0.50)" }}>
+            View My Work →
           </button>
           <button
             onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3.5 rounded-full font-semibold glass-card text-foreground/80 hover:bg-white/70 transition-all duration-300 hover:scale-105"
-          >
+            className="px-9 py-4 rounded-full font-bold glass-card text-foreground/80 hover:bg-white/75 transition-all duration-300 hover:scale-105 text-base">
             About Me
           </button>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center pt-1.5">
-            <div className="w-1 h-3 rounded-full bg-foreground/30 animate-pulse" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+          <div className="w-6 h-10 rounded-full border-2 border-foreground/30 flex items-start justify-center pt-1.5">
+            <div className="w-1 h-3 rounded-full bg-foreground/40 animate-pulse" />
           </div>
         </div>
       </div>
@@ -293,86 +416,98 @@ function Hero() {
   );
 }
 
+/* ─── ABOUT ──────────────────────────────────────────────────────────────────── */
+
 function About() {
   const ref = useRef<HTMLElement>(null);
   const visible = useIntersection(ref);
 
+  const stats = [
+    { icon: "🎯", label: "Expertise", value: "3 Domains" },
+    { icon: "💡", label: "Focus", value: "Innovation" },
+    { icon: "🚀", label: "Approach", value: "Results-First" },
+    { icon: "🌍", label: "Mindset", value: "Growth" },
+  ];
+
   return (
-    <section ref={ref} id="about" className="py-24 px-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div
-        className="absolute top-0 right-0 w-96 h-96 decorative-orb opacity-20"
-        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.4), transparent)" }}
-      />
+    <section ref={ref} id="about" className="py-28 px-6 relative overflow-hidden">
+      {/* Section blobs */}
+      <div className="decorative-orb absolute top-0 right-0 w-[500px] h-[400px] opacity-20"
+        style={{ background: "radial-gradient(ellipse, rgba(139,92,246,0.5), rgba(212,70,134,0.2))" }} />
+      <div className="decorative-orb absolute bottom-0 left-0 w-96 h-96 opacity-15"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.4), transparent)" }} />
 
       <div className="max-w-6xl mx-auto">
-        <div className={`grid md:grid-cols-2 gap-16 items-center transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          {/* Left: decorative visual */}
+        <div className={`grid md:grid-cols-2 gap-16 items-center transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-14"}`}>
+
+          {/* Avatar column */}
           <div className="flex justify-center">
             <div className="relative">
-              {/* Main avatar circle */}
-              <div
-                className="w-72 h-72 rounded-full flex items-center justify-center text-8xl animate-pulse-glow"
+              {/* Main circle */}
+              <div className="w-72 h-72 rounded-full flex items-center justify-center text-8xl animate-pulse-glow relative overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, rgba(194,84,124,0.15), rgba(139,92,246,0.15))",
-                  border: "2px solid rgba(194,84,124,0.3)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <span>👩🏿‍💻</span>
+                  background: "linear-gradient(135deg, rgba(212,85,138,0.18), rgba(139,92,246,0.18), rgba(245,158,11,0.10))",
+                  border: "2px solid rgba(212,85,138,0.35)",
+                  backdropFilter: "blur(16px)",
+                }}>
+                <span style={{ filter: "drop-shadow(0 0 16px rgba(212,85,138,0.6))" }}>👩🏿‍💻</span>
+
+                {/* Inner shimmer ring */}
+                <div className="absolute inset-0 rounded-full animate-spin-slow"
+                  style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(212,85,138,0.15) 25%, transparent 50%, rgba(139,92,246,0.15) 75%, transparent 100%)" }} />
               </div>
 
-              {/* Floating badge cards */}
-              <div className="glass-card absolute -top-4 -right-8 px-4 py-2.5 rounded-2xl animate-float shadow-lg">
-                <span className="text-xs font-semibold text-foreground/70">💼 Tech Professional</span>
-              </div>
-              <div className="glass-card absolute -bottom-4 -left-8 px-4 py-2.5 rounded-2xl animate-float-delay shadow-lg">
-                <span className="text-xs font-semibold text-foreground/70">🤖 AI Specialist</span>
-              </div>
-              <div className="glass-card absolute top-1/2 -right-12 px-4 py-2.5 rounded-2xl animate-float-delay-2 shadow-lg">
-                <span className="text-xs font-semibold text-foreground/70">✨ Innovator</span>
-              </div>
+              {/* Floating chips */}
+              {[
+                { text: "💼 Tech Pro", pos: "-top-5 -right-10", anim: "animate-float" },
+                { text: "🤖 AI Expert", pos: "-bottom-5 -left-10", anim: "animate-float-delay" },
+                { text: "✨ Innovator", pos: "top-1/2 -right-16", anim: "animate-float-delay-2" },
+                { text: "🌟 Leader", pos: "top-1/3 -left-14", anim: "animate-float-delay-3" },
+              ].map(({ text, pos, anim }) => (
+                <div key={text}
+                  className={`glass-card absolute ${pos} ${anim} px-3 py-2 rounded-xl shadow-lg text-xs font-semibold text-foreground/75 whitespace-nowrap`}>
+                  {text}
+                </div>
+              ))}
 
-              {/* Decorative rings */}
-              <div
-                className="absolute inset-0 rounded-full border border-pink-300/30 scale-110 animate-pulse"
-                style={{ animationDuration: "3s" }}
-              />
-              <div
-                className="absolute inset-0 rounded-full border border-violet-300/20 scale-125 animate-pulse"
-                style={{ animationDuration: "4s", animationDelay: "1s" }}
-              />
+              {/* Rings */}
+              <div className="absolute inset-0 rounded-full border-2 border-pink-400/20 scale-110 animate-pulse" style={{ animationDuration: "3s" }} />
+              <div className="absolute inset-0 rounded-full border border-violet-400/15 scale-125 animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
+              <div className="absolute inset-0 rounded-full border border-amber-400/10 scale-140 animate-pulse" style={{ animationDuration: "7s", animationDelay: "2s" }} />
             </div>
           </div>
 
-          {/* Right: About content */}
+          {/* Content column */}
           <div>
             <div className="section-heading mb-6">
-              <h2 className="text-4xl font-black text-foreground">About Me</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-foreground">About Me</h2>
             </div>
 
-            <div
-              className="glass-card rounded-3xl p-8 shadow-xl mb-6"
-              style={{ background: "rgba(255,255,255,0.6)" }}
-            >
-              <p className="text-foreground/50 text-base leading-relaxed italic">
+            <div className="rounded-3xl p-8 mb-6 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.65), rgba(255,240,250,0.5))",
+                border: "1px solid rgba(212,85,138,0.20)",
+                backdropFilter: "blur(18px)",
+                boxShadow: "0 8px 32px rgba(180,80,140,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
+              }}>
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-24 h-24 opacity-30"
+                style={{ background: "radial-gradient(circle at top right, rgba(212,85,138,0.6), transparent)" }} />
+              <p className="text-foreground/50 text-base leading-relaxed italic relative z-10">
                 ✏️ This section is ready for your story. Share your background, values, journey, and what drives you as a professional. What makes you uniquely you?
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { label: "Expertise", value: "3+ Areas" },
-                { label: "Focus", value: "Innovation" },
-                { label: "Approach", value: "Results-Driven" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass-card rounded-2xl p-4 text-center skill-card-hover"
-                >
-                  <div className="text-lg font-black gradient-text">{stat.value}</div>
-                  <div className="text-xs text-foreground/50 mt-1">{stat.label}</div>
-                </div>
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {stats.map(({ icon, label, value }, i) => (
+                <TiltCard key={label}
+                  className="glass-card rounded-2xl p-4 text-center cursor-default"
+                  style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="text-2xl mb-1">{icon}</div>
+                  <div className="text-sm font-black gradient-text">{value}</div>
+                  <div className="text-xs text-foreground/45 mt-0.5">{label}</div>
+                </TiltCard>
               ))}
             </div>
           </div>
@@ -382,104 +517,132 @@ function About() {
   );
 }
 
+/* ─── SKILLS ─────────────────────────────────────────────────────────────────── */
+
 function Skills() {
   const ref = useRef<HTMLElement>(null);
   const visible = useIntersection(ref);
 
+  const proficiencies = [
+    { label: "IT Systems Support", pct: 92, color: "#f472b6" },
+    { label: "AI Prompt Engineering", pct: 88, color: "#a78bfa" },
+    { label: "Software Development", pct: 85, color: "#f59e0b" },
+  ];
+
   return (
-    <section ref={ref} id="skills" className="py-24 px-6 relative overflow-hidden">
-      {/* Background gradient wash */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(194,84,124,0.06) 50%, transparent 100%)",
-        }}
-      />
+    <section ref={ref} id="skills" className="py-28 px-6 relative overflow-hidden">
+      {/* Aurora wash */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(167,139,250,0.12), rgba(212,85,138,0.08), transparent)" }} />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className={`text-center mb-16 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full mb-4">
-            <span className="text-sm text-foreground/60">What I Do</span>
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="inline-flex items-center gap-2.5 glass-card px-5 py-2.5 rounded-full mb-5 shadow-md">
+            <span className="text-base">⚡</span>
+            <span className="text-sm font-semibold text-foreground/65">What I Bring</span>
           </div>
-          <h2 className="text-5xl font-black mb-4 section-heading inline-block">
+          <h2 className="text-5xl md:text-6xl font-black mb-4 section-heading inline-block">
             <span className="gradient-text">My Expertise</span>
           </h2>
-          <p className="text-foreground/55 max-w-xl mx-auto">
+          <p className="text-foreground/50 max-w-lg mx-auto text-base leading-relaxed">
             A fusion of technical depth and creative problem-solving across the modern technology landscape.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Skill cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {skills.map((skill, idx) => (
             <div
               key={skill.title}
-              className={`skill-card-hover transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-              style={{ transitionDelay: `${idx * 150}ms` }}
-            >
-              <div
-                className="glass-card rounded-3xl p-8 h-full relative overflow-hidden group"
-                style={{
-                  boxShadow: `0 8px 30px ${skill.glowColor}, 0 2px 8px rgba(0,0,0,0.05)`,
-                }}
-              >
-                {/* Top gradient accent */}
-                <div
-                  className={`absolute top-0 left-0 right-0 h-1 rounded-t-3xl bg-gradient-to-r ${skill.gradient}`}
-                />
+              className={`transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+              style={{ transitionDelay: `${idx * 180}ms` }}>
+              <TiltCard className="glow-border h-full">
+                <div className="glow-border-inner p-8 relative overflow-hidden group">
+                  {/* Top gradient stripe */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${skill.gradient}`} />
 
-                {/* Background glow on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}
-                />
+                  {/* Hover background glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-8 transition-opacity duration-600`} />
 
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div
-                    className="mb-6 w-20 h-20 flex items-center justify-center rounded-2xl"
-                    style={{
-                      background: `linear-gradient(135deg, ${skill.glowColor}, rgba(255,255,255,0.5))`,
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.6)",
-                    }}
-                  >
-                    <SkillIcon index={idx} />
-                  </div>
+                  {/* Animated corner sparkle */}
+                  <div className="absolute top-3 right-3 w-2 h-2 rounded-full sparkle"
+                    style={{ backgroundColor: skill.borderColor, "--duration": "2s", "--delay": `${idx * 0.5}s` } as React.CSSProperties} />
 
-                  <h3 className="text-xl font-bold text-foreground mb-3">{skill.title}</h3>
-                  <p className="text-foreground/60 text-sm leading-relaxed mb-6">{skill.description}</p>
+                  <div className="relative z-10">
+                    {/* Icon box */}
+                    <div className="mb-6 w-20 h-20 flex items-center justify-center rounded-2xl relative"
+                      style={{
+                        background: `linear-gradient(135deg, ${skill.glowColor}, rgba(255,255,255,0.55))`,
+                        border: `1px solid ${skill.borderColor}40`,
+                        backdropFilter: "blur(12px)",
+                        boxShadow: `0 4px 20px ${skill.glowColor}`,
+                      }}>
+                      <SkillIcon index={idx} />
+                      {/* Icon glow ring */}
+                      <div className="absolute inset-0 rounded-2xl animate-pulse"
+                        style={{ boxShadow: `0 0 20px ${skill.glowColor}`, animationDuration: `${2.5 + idx * 0.5}s` }} />
+                    </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {skill.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 rounded-full text-xs font-medium"
-                        style={{
-                          background: `linear-gradient(135deg, ${skill.glowColor}, rgba(255,255,255,0.3))`,
-                          border: "1px solid rgba(255,255,255,0.5)",
-                          color: "var(--color-foreground)",
-                          opacity: 0.9,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <h3 className="text-xl font-bold text-foreground mb-2">{skill.title}</h3>
+                    <p className="text-foreground/58 text-sm leading-relaxed mb-5">{skill.description}</p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {skill.tags.map((tag) => (
+                        <span key={tag} className="tag-pill px-3 py-1 rounded-full text-xs font-semibold"
+                          style={{
+                            background: `linear-gradient(135deg, ${skill.glowColor}, rgba(255,255,255,0.25))`,
+                            border: `1px solid ${skill.borderColor}50`,
+                            color: "hsl(var(--foreground))",
+                          }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </div>
           ))}
+        </div>
+
+        {/* Proficiency bars */}
+        <div className={`glass-card rounded-3xl p-8 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          style={{ transitionDelay: "600ms" }}>
+          <h3 className="text-lg font-bold text-foreground/70 mb-6 text-center tracking-wide uppercase text-sm">Proficiency Overview</h3>
+          <div className="flex flex-col gap-5">
+            {proficiencies.map(({ label, pct, color }, i) => (
+              <div key={label}>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-semibold text-foreground/75">{label}</span>
+                  <span className="text-sm font-black" style={{ color }}>{pct}%</span>
+                </div>
+                <div className="h-2.5 rounded-full bg-foreground/8 overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: visible ? `${pct}%` : "0%",
+                      background: `linear-gradient(90deg, ${color}, rgba(139,92,246,0.8))`,
+                      transition: `width 1.2s cubic-bezier(0.22,1,0.36,1) ${600 + i * 200}ms`,
+                      boxShadow: `0 0 12px ${color}80`,
+                    }} />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+/* ─── CONTACT ────────────────────────────────────────────────────────────────── */
+
 function Contact() {
   const ref = useRef<HTMLElement>(null);
   const visible = useIntersection(ref);
   const [copied, setCopied] = useState(false);
-
   const email = "neliswa.mapisa@email.com";
 
   const copyEmail = () => {
@@ -489,66 +652,66 @@ function Contact() {
   };
 
   return (
-    <section ref={ref} id="contact" className="py-24 px-6 relative overflow-hidden">
-      <div
-        className="decorative-orb absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px]"
-        style={{ background: "radial-gradient(ellipse, rgba(194,84,124,0.25), rgba(139,92,246,0.15))" }}
-      />
+    <section ref={ref} id="contact" className="py-28 px-6 relative overflow-hidden">
+      {/* Background orbs */}
+      <div className="decorative-orb absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[350px]"
+        style={{ background: "radial-gradient(ellipse, rgba(212,85,138,0.3), rgba(139,92,246,0.2), rgba(245,158,11,0.1))" }} />
+      <div className="decorative-orb absolute top-10 left-10 w-64 h-64 opacity-20"
+        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.5), transparent)" }} />
 
       <div className="relative max-w-4xl mx-auto">
-        <div
-          className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          {/* Main contact card */}
-          <div
-            className="rounded-3xl p-12 text-center relative overflow-hidden"
+        <div className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          <div className="rounded-3xl p-12 text-center relative overflow-hidden"
             style={{
-              background: "linear-gradient(135deg, rgba(194,84,124,0.12), rgba(139,92,246,0.12))",
-              border: "1px solid rgba(194,84,124,0.25)",
-              backdropFilter: "blur(20px)",
-            }}
-          >
+              background: "linear-gradient(135deg, rgba(212,85,138,0.12), rgba(139,92,246,0.10), rgba(245,158,11,0.08))",
+              border: "1px solid rgba(212,85,138,0.22)",
+              backdropFilter: "blur(24px)",
+              boxShadow: "0 20px 60px rgba(180,80,140,0.15)",
+            }}>
+            {/* Sparkles inside card */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+              <Sparkles count={12} />
+            </div>
+
             {/* Corner decorations */}
-            <div className="absolute top-6 left-6 w-20 h-20 rounded-full border border-pink-300/30 animate-pulse" />
-            <div className="absolute bottom-6 right-6 w-16 h-16 rounded-full border border-violet-300/30 animate-pulse" style={{ animationDelay: "1s" }} />
-            <div className="absolute top-6 right-10 w-3 h-3 rounded-full bg-pink-300/50 animate-float" />
-            <div className="absolute bottom-10 left-10 w-2 h-2 rounded-full bg-violet-300/50 animate-float-delay" />
+            <div className="absolute top-5 left-5 w-20 h-20 rounded-full border border-pink-400/25 animate-pulse" />
+            <div className="absolute bottom-5 right-5 w-16 h-16 rounded-full border border-violet-400/25 animate-pulse" style={{ animationDelay: "1s" }} />
+            <div className="absolute top-5 right-10 w-24 h-24 rounded-full border border-dashed border-amber-300/20 animate-spin-slow" />
 
-            <h2 className="text-5xl font-black mb-4">
-              <span className="gradient-text">Let's Connect</span>
-            </h2>
-            <p className="text-foreground/55 max-w-md mx-auto mb-10 text-lg">
-              Open to new opportunities, collaborations, and interesting conversations in tech.
-            </p>
+            <div className="relative z-10">
+              <div className="text-5xl mb-4 animate-float">💌</div>
+              <h2 className="text-5xl md:text-6xl font-black mb-4">
+                <span className="gradient-text">Let's Connect</span>
+              </h2>
+              <p className="text-foreground/50 max-w-md mx-auto mb-10 text-lg leading-relaxed">
+                Open to new opportunities, collaborations, and conversations in tech. Let's build something amazing together.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-              <button
-                onClick={copyEmail}
-                className="flex items-center gap-3 glass-card px-6 py-3.5 rounded-full font-medium text-foreground/75 hover:bg-white/70 transition-all hover:scale-105 group"
-              >
-                <span className="text-lg">📧</span>
-                <span className="text-sm">{email}</span>
-                <span className="text-xs text-foreground/40 group-hover:text-foreground/60 transition-colors">
+              {/* Email */}
+              <button onClick={copyEmail}
+                className="inline-flex items-center gap-3 glass-card px-7 py-4 rounded-full font-semibold text-foreground/75 hover:bg-white/75 transition-all hover:scale-105 mb-8 shadow-lg group"
+                style={{ boxShadow: "0 4px 20px rgba(180,80,140,0.15)" }}>
+                <span className="text-xl">📧</span>
+                <span className="text-sm font-bold">{email}</span>
+                <span className={`text-xs font-semibold px-3 py-1 rounded-full transition-all ${copied ? "bg-emerald-400/20 text-emerald-600" : "bg-foreground/8 text-foreground/40 group-hover:text-foreground/60"}`}>
                   {copied ? "✓ Copied!" : "Copy"}
                 </span>
               </button>
-            </div>
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                { icon: "💼", label: "LinkedIn", href: "#" },
-                { icon: "🐙", label: "GitHub", href: "#" },
-                { icon: "🐦", label: "Twitter", href: "#" },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="flex items-center gap-2 glass-card px-5 py-2.5 rounded-full text-sm font-medium text-foreground/70 hover:bg-white/70 transition-all hover:scale-105 hover:shadow-md"
-                >
-                  <span>{social.icon}</span>
-                  {social.label}
-                </a>
-              ))}
+              {/* Social links */}
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  { icon: "💼", label: "LinkedIn", color: "#0077b5" },
+                  { icon: "🐙", label: "GitHub", color: "#333" },
+                  { icon: "🐦", label: "Twitter / X", color: "#1da1f2" },
+                ].map(({ icon, label, color }) => (
+                  <a key={label} href="#"
+                    className="flex items-center gap-2.5 glass-card px-5 py-3 rounded-full text-sm font-semibold text-foreground/70 hover:bg-white/75 transition-all hover:scale-105 hover:shadow-lg">
+                    <span className="text-base">{icon}</span>
+                    {label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -557,24 +720,35 @@ function Contact() {
   );
 }
 
+/* ─── FOOTER ─────────────────────────────────────────────────────────────────── */
+
 function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-border/50">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-foreground/40">
-          © {new Date().getFullYear()} <span className="gradient-text font-semibold">Neliswa Mapisa</span>. All rights reserved.
+    <footer className="py-8 px-6 relative overflow-hidden"
+      style={{ borderTop: "1px solid rgba(212,85,138,0.15)" }}>
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+        <p className="text-sm text-foreground/35">
+          © {new Date().getFullYear()} <span className="gradient-text font-bold">Neliswa Mapisa</span>. All rights reserved.
         </p>
-        <p className="text-xs text-foreground/30">
-          IT Systems Support · AI Prompt Engineer · Software Developer
-        </p>
+        <div className="flex items-center gap-2 text-xs text-foreground/25">
+          <span className="w-1.5 h-1.5 rounded-full bg-pink-400/60" />
+          <span>IT Systems Support</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60" />
+          <span>AI Prompt Engineer</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400/60" />
+          <span>Software Developer</span>
+        </div>
       </div>
     </footer>
   );
 }
 
+/* ─── ROOT ───────────────────────────────────────────────────────────────────── */
+
 export default function Portfolio() {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />
