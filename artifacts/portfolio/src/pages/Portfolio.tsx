@@ -250,7 +250,7 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const navItems = ["About", "Skills", "Contact"];
+  const navItems = ["About", "Skills", "Projects", "Contact"];
   const scrollTo = (id: string) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
@@ -657,6 +657,169 @@ function Skills() {
   );
 }
 
+/* ─── PROJECTS ───────────────────────────────────────────────────────────────── */
+
+const projects = [
+  {
+    title: "Project Title",
+    description: "Describe what this project does, the problem it solves, and the impact it had. Replace this with your own project details.",
+    tags: ["Tag 1", "Tag 2", "Tag 3"],
+    gradient: "from-pink-400 to-fuchsia-500",
+    glowColor: "rgba(244,114,182,0.25)",
+    accent: "#f472b6",
+    icon: "🚀",
+    liveUrl: "#",
+    repoUrl: "#",
+  },
+  {
+    title: "Project Title",
+    description: "Describe what this project does, the problem it solves, and the impact it had. Replace this with your own project details.",
+    tags: ["Tag 1", "Tag 2", "Tag 3"],
+    gradient: "from-violet-400 to-purple-600",
+    glowColor: "rgba(167,139,250,0.25)",
+    accent: "#a78bfa",
+    icon: "🛠️",
+    liveUrl: "#",
+    repoUrl: "#",
+  },
+  {
+    title: "Project Title",
+    description: "Describe what this project does, the problem it solves, and the impact it had. Replace this with your own project details.",
+    tags: ["Tag 1", "Tag 2", "Tag 3"],
+    gradient: "from-amber-400 to-rose-500",
+    glowColor: "rgba(245,158,11,0.25)",
+    accent: "#f59e0b",
+    icon: "💡",
+    liveUrl: "#",
+    repoUrl: "#",
+  },
+  {
+    title: "Project Title",
+    description: "Describe what this project does, the problem it solves, and the impact it had. Replace this with your own project details.",
+    tags: ["Tag 1", "Tag 2", "Tag 3"],
+    gradient: "from-fuchsia-400 to-pink-600",
+    glowColor: "rgba(232,121,249,0.25)",
+    accent: "#e879f9",
+    icon: "🌐",
+    liveUrl: "#",
+    repoUrl: "#",
+  },
+];
+
+function Projects() {
+  const ref = useRef<HTMLElement>(null);
+  const visible = useIntersection(ref);
+
+  return (
+    <section ref={ref} id="projects" className="py-28 px-6 relative overflow-hidden">
+      {/* Background wash */}
+      <div className="absolute inset-0 pointer-events-none opacity-25"
+        style={{ background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,158,11,0.12), rgba(212,85,138,0.08), transparent)" }} />
+      <div className="decorative-orb absolute top-0 left-0 w-80 h-80 opacity-15"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.45), transparent)" }} />
+      <div className="decorative-orb absolute bottom-0 right-0 w-96 h-96 opacity-15"
+        style={{ background: "radial-gradient(circle, rgba(212,85,138,0.45), transparent)" }} />
+
+      <div className="relative max-w-6xl mx-auto">
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="inline-flex items-center gap-2.5 glass-card px-5 py-2.5 rounded-full mb-5 shadow-md">
+            <span className="text-base">🗂️</span>
+            <span className="text-sm font-semibold text-foreground/65">What I've Built</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-black mb-4 section-heading inline-block">
+            <span className="gradient-text">My Projects</span>
+          </h2>
+          <p className="text-foreground/50 max-w-lg mx-auto text-base leading-relaxed">
+            A selection of things I've designed, built, and shipped. Each card is ready for you to fill in with your real projects.
+          </p>
+        </div>
+
+        {/* Project grid */}
+        <div className="grid md:grid-cols-2 gap-7">
+          {projects.map((project, idx) => (
+            <div
+              key={idx}
+              className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-14"}`}
+              style={{ transitionDelay: `${idx * 140}ms` }}
+            >
+              <TiltCard className="glow-border h-full">
+                <div className="glow-border-inner p-7 relative overflow-hidden group flex flex-col">
+                  {/* Top gradient stripe */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${project.gradient}`} />
+
+                  {/* Soft hover glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500`} />
+
+                  {/* Corner sparkle */}
+                  <div className="sparkle absolute top-4 right-4 w-2 h-2 rounded-full"
+                    style={{ backgroundColor: project.accent, "--duration": "2.2s", "--delay": `${idx * 0.4}s` } as React.CSSProperties} />
+
+                  <div className="relative z-10 flex flex-col flex-1">
+                    {/* Icon + title row */}
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-14 h-14 flex items-center justify-center rounded-2xl text-2xl flex-shrink-0"
+                        style={{
+                          background: `linear-gradient(135deg, ${project.glowColor}, rgba(255,255,255,0.55))`,
+                          border: `1px solid ${project.accent}40`,
+                          boxShadow: `0 4px 16px ${project.glowColor}`,
+                        }}>
+                        {project.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-black text-foreground mb-1 truncate">{project.title}</h3>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags.map((tag) => (
+                            <span key={tag} className="tag-pill px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                              style={{
+                                background: `linear-gradient(135deg, ${project.glowColor}, rgba(255,255,255,0.2))`,
+                                border: `1px solid ${project.accent}40`,
+                                color: "hsl(var(--foreground))",
+                              }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-foreground/58 text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
+
+                    {/* Action buttons */}
+                    <div className="flex gap-3 mt-auto pt-2 border-t border-foreground/8">
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full text-white transition-all hover:scale-105 hover:shadow-md"
+                        style={{ background: `linear-gradient(135deg, ${project.accent}, rgba(139,92,246,0.8))`, boxShadow: `0 2px 12px ${project.glowColor}` }}>
+                        <span>🔗</span> Live Demo
+                      </a>
+                      <a href={project.repoUrl} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full glass-card text-foreground/70 hover:bg-white/75 transition-all hover:scale-105">
+                        <span>🐙</span> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </TiltCard>
+            </div>
+          ))}
+        </div>
+
+        {/* "More on GitHub" nudge */}
+        <div className={`text-center mt-12 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          style={{ transitionDelay: "700ms" }}>
+          <a href="https://github.com/iamnelly25/portfolio-creator" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 glass-card px-7 py-3.5 rounded-full font-semibold text-foreground/70 hover:bg-white/75 transition-all hover:scale-105 shadow-md text-sm">
+            <span className="text-base">🐙</span>
+            See more on GitHub
+            <span className="text-foreground/40">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── CONTACT ────────────────────────────────────────────────────────────────── */
 
 function Contact() {
@@ -772,6 +935,7 @@ export default function Portfolio() {
       <Hero />
       <About />
       <Skills />
+      <Projects />
       <Contact />
       <Footer />
     </div>
