@@ -721,10 +721,10 @@ function Contact() {
               {/* Social links */}
               <div className="flex flex-wrap justify-center gap-3">
                 {[
-                  { icon: "💼", label: "LinkedIn", color: "#0077b5" },
-                  { icon: "🐙", label: "GitHub", color: "#333" },
-                ].map(({ icon, label, color }) => (
-                  <a key={label} href="#"
+                  { icon: "💼", label: "LinkedIn", color: "#0077b5", href: "https://www.linkedin.com/in/neliswa-mapisa-4643b130b/" },
+                  { icon: "🐙", label: "GitHub", color: "#333", href: "https://github.com/iamnelly25/portfolio-creator" },
+                ].map(({ icon, label, color, href }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-2.5 glass-card px-5 py-3 rounded-full text-sm font-semibold text-foreground/70 hover:bg-white/75 transition-all hover:scale-105 hover:shadow-lg">
                     <span className="text-base">{icon}</span>
                     {label}
