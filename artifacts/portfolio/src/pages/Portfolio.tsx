@@ -349,7 +349,7 @@ function Hero() {
         {/* Name */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-2 tracking-tighter leading-none animate-fade-in-up"
           style={{ animationDelay: "0.1s", opacity: 0, animationFillMode: "forwards" }}>
-          <span className="gradient-text">NM</span>
+          <span className="gradient-text">Neliswa</span>
         </h1>
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter leading-none animate-fade-in-up"
           style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
