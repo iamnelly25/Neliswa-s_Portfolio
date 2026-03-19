@@ -493,8 +493,11 @@ function About() {
               {/* Decorative corner accent */}
               <div className="absolute top-0 right-0 w-24 h-24 opacity-30"
                 style={{ background: "radial-gradient(circle at top right, rgba(212,85,138,0.6), transparent)" }} />
-              <p className="text-foreground/50 text-base leading-relaxed italic relative z-10">
-                ✏️ This section is ready for your story. Share your background, values, journey, and what drives you as a professional. What makes you uniquely you?
+              <p className="text-foreground/75 text-base leading-relaxed relative z-10">
+                I'm an IT support specialist with a passion for software and application development. I enjoy solving technical problems and building tools that make people's lives easier.
+              </p>
+              <p className="text-foreground/65 text-base leading-relaxed relative z-10 mt-4">
+                I'm continuously growing my skills in full-stack development while providing reliable IT support and troubleshooting solutions.
               </p>
             </div>
 
@@ -523,10 +526,25 @@ function Skills() {
   const ref = useRef<HTMLElement>(null);
   const visible = useIntersection(ref);
 
-  const proficiencies = [
-    { label: "IT Systems Support", pct: 92, color: "#f472b6" },
-    { label: "AI Prompt Engineering", pct: 88, color: "#a78bfa" },
-    { label: "Software Development", pct: 85, color: "#f59e0b" },
+  const highlights = [
+    {
+      icon: "🖥️",
+      title: "Infrastructure & Support",
+      body: "Delivering hands-on technical support across hardware, software, and networking — ensuring systems stay stable, secure, and efficient.",
+      color: "#f472b6",
+    },
+    {
+      icon: "🤖",
+      title: "AI & Intelligent Automation",
+      body: "Designing precise prompt frameworks and AI-assisted workflows that amplify productivity and unlock the practical power of language models.",
+      color: "#a78bfa",
+    },
+    {
+      icon: "🛠️",
+      title: "Full-Stack Development",
+      body: "Building responsive, scalable applications from the ground up — combining clean code principles with real-world problem-solving instincts.",
+      color: "#f59e0b",
+    },
   ];
 
   return (
@@ -607,26 +625,28 @@ function Skills() {
           ))}
         </div>
 
-        {/* Proficiency bars */}
-        <div className={`glass-card rounded-3xl p-8 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        {/* Capability highlights */}
+        <div className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           style={{ transitionDelay: "600ms" }}>
-          <h3 className="text-lg font-bold text-foreground/70 mb-6 text-center tracking-wide uppercase text-sm">Proficiency Overview</h3>
-          <div className="flex flex-col gap-5">
-            {proficiencies.map(({ label, pct, color }, i) => (
-              <div key={label}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-semibold text-foreground/75">{label}</span>
-                  <span className="text-sm font-black" style={{ color }}>{pct}%</span>
-                </div>
-                <div className="h-2.5 rounded-full bg-foreground/8 overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: visible ? `${pct}%` : "0%",
-                      background: `linear-gradient(90deg, ${color}, rgba(139,92,246,0.8))`,
-                      transition: `width 1.2s cubic-bezier(0.22,1,0.36,1) ${600 + i * 200}ms`,
-                      boxShadow: `0 0 12px ${color}80`,
-                    }} />
+          <div className="text-center mb-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">Core Capabilities</span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {highlights.map(({ icon, title, body, color }, i) => (
+              <div
+                key={title}
+                className={`glass-card rounded-2xl p-6 relative overflow-hidden group transition-all duration-700 hover:-translate-y-1 hover:shadow-xl ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ transitionDelay: `${700 + i * 120}ms`, boxShadow: `0 4px 24px ${color}20` }}>
+                {/* Left accent bar */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
+                  style={{ background: `linear-gradient(180deg, ${color}, rgba(139,92,246,0.6))` }} />
+                {/* Background glow on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                  style={{ background: `radial-gradient(ellipse at top left, ${color}12, transparent 60%)` }} />
+                <div className="relative z-10 pl-2">
+                  <div className="text-2xl mb-3">{icon}</div>
+                  <h4 className="text-sm font-black text-foreground/85 mb-2 tracking-wide">{title}</h4>
+                  <p className="text-xs text-foreground/55 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
@@ -643,7 +663,7 @@ function Contact() {
   const ref = useRef<HTMLElement>(null);
   const visible = useIntersection(ref);
   const [copied, setCopied] = useState(false);
-  const email = "neliswa.mapisa@email.com";
+  const email = "neliswamapisa@outlook.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -703,7 +723,6 @@ function Contact() {
                 {[
                   { icon: "💼", label: "LinkedIn", color: "#0077b5" },
                   { icon: "🐙", label: "GitHub", color: "#333" },
-                  { icon: "🐦", label: "Twitter / X", color: "#1da1f2" },
                 ].map(({ icon, label, color }) => (
                   <a key={label} href="#"
                     className="flex items-center gap-2.5 glass-card px-5 py-3 rounded-full text-sm font-semibold text-foreground/70 hover:bg-white/75 transition-all hover:scale-105 hover:shadow-lg">
