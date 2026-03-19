@@ -262,9 +262,7 @@ function Navbar() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="text-2xl font-black gradient-text tracking-wider animate-neon"
-        >
-          NM
-        </button>
+        >Neliswa</button>
 
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
@@ -286,7 +284,6 @@ function Navbar() {
           <span className="block w-3 h-0.5 bg-foreground" />
         </button>
       </div>
-
       {menuOpen && (
         <div className="md:hidden glass-card mx-4 mt-2 rounded-2xl p-4 flex flex-col gap-3">
           {navItems.map((item) => (
